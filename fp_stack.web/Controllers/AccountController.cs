@@ -29,6 +29,9 @@ namespace fp_stack.web.Controllers
             {
                 var claims = new List<Claim>();
                 claims.Add(new Claim(ClaimTypes.Name, model.UserName));
+
+                claims.Add(new Claim(ClaimTypes.Role, "admin")); //Implementando a Role
+
                 var id = new ClaimsIdentity(claims, "password");
                 var principal = new ClaimsPrincipal(id);
 
@@ -38,6 +41,15 @@ namespace fp_stack.web.Controllers
             }
 
             return View();
+        }
+
+        //Logoff recomendação por POST ao invés de GET
+
+        public async Task<IActionResult> Logoff()
+        {
+            await HttpContext.SignOutAsync();
+
+            return RedirectToAction("Index", "Home");
         }
     }
 }
