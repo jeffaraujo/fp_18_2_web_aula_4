@@ -3,9 +3,12 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using fp_stack.core.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace fp_stack.web.Controllers
 {
+    [Authorize]
+
     public class PerguntasController : Controller
     {
         private readonly Context _context;
