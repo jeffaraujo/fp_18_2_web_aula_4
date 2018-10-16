@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using fp_stack.core.Models;
 using fp_stack.api.Custom;
+using Microsoft.AspNetCore.Authorization;
 
 namespace fp_stack.api.Controllers
 {
@@ -13,7 +14,8 @@ namespace fp_stack.api.Controllers
     //[Route("api/v{apiVersion}/[controller]")]
     //[ApiVersion("1.0")]
     //[EnableCors("Default")]
-    [CustomAuthorize]
+    //[CustomAuthorize]
+    [Authorize]
     public class PerguntasController : ControllerBase
     {
         private readonly Context _context;
